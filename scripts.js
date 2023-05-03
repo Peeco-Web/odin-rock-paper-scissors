@@ -102,52 +102,126 @@ const rockButton = document.querySelector('.rock');
 const paperButton = document.querySelector('.paper');
 const scissorsButton = document.querySelector('.scissors');
 
+const logRounds = document.querySelector('.logRounds')
+
+const rockComp = document.querySelector('.rockImage')
+const paperComp = document.querySelector('.paperImage')
+const scissorsComp = document.querySelector('.scissorsImage')
+
 
 rockButton.addEventListener("click", rockSelect);
 paperButton.addEventListener("click", paperSelect);
 scissorsButton.addEventListener("click", scissorsSelect);
 
 
+function gameOver() {
+    if (yourScore == 5) {
+        alert("Game Over, You Win!")
+        location.reload()
+    }
+    else if (computerScore == 5) {
+        alert("Game Over, Computer Wins!")
+        location.reload()
+    }
+    else {
+        return
+    }
+}
+
+function changeComputerImage(compChoice) {
+    rockComp.setAttribute("src","images/rockc.jpg")
+    paperComp.setAttribute("src","images/paperc.jpg")
+    scissorsComp.setAttribute("src","images/scissorsc.jpg")
+
+    if (compChoice == 'Rock') {
+        rockComp.setAttribute("src","images/rock.jpg")
+    }
+    else if (compChoice == 'Paper') {
+        paperComp.setAttribute("src","images/paper.jpg")
+    }
+    else if (compChoice == 'Scissors') {
+        scissorsComp.setAttribute("src","images/scissors.jpg")
+    }
+    return
+}
+
 
 function rockSelect() {
-    result = playRound('rock',getComputerChoice());
+
+    compChoice = getComputerChoice();
+    result = playRound('rock',compChoice);
+
+    changeComputerImage(compChoice);
+
 
     if (result == 'win') {
         yourScore++;
         document.querySelector('#yourScore').innerHTML = "Your Score: " + yourScore;
-        return
+        gameOver()
     }
     else if (result == 'lose') {
         computerScore++;
         document.querySelector('#computerScore').innerHTML = "Computer Score: " + computerScore;
+        gameOver()
     }
+    
+
+    let p = document.createElement("p");
+        logRounds.append(p);
+        let roundResult = document.createTextNode(result);
+        p.append(roundResult);
+
+    return
 }
 
 function paperSelect() {
-    result = playRound('paper',getComputerChoice());
+    compChoice = getComputerChoice();
+    result = playRound('paper',compChoice);
+
+    changeComputerImage(compChoice);
     
     if (result == 'win') {
         yourScore++;
         document.querySelector('#yourScore').innerHTML = "Your Score: " + yourScore;
-        return
+        gameOver()
     }
     else if (result == 'lose') {
         computerScore++;
         document.querySelector('#computerScore').innerHTML = "Computer Score: " + computerScore;
+        gameOver()
     }
+    let p = document.createElement("p");
+        logRounds.append(p);
+        let roundResult = document.createTextNode(result);
+        p.append(roundResult);
+
+    return
 }
 
 function scissorsSelect() {
-    result = playRound('scissors',getComputerChoice());
+    compChoice = getComputerChoice();
+    result = playRound('scissors',compChoice);
+
+    changeComputerImage(compChoice);
+
+
     
     if (result == 'win') {
         yourScore++;
         document.querySelector('#yourScore').innerHTML = "Your Score: " + yourScore;
-        return
+        gameOver()
+        
     }
     else if (result == 'lose') {
         computerScore++;
         document.querySelector('#computerScore').innerHTML = "Computer Score: " + computerScore;
+        gameOver()
     }
+    let p = document.createElement("p");
+        logRounds.append(p);
+        let roundResult = document.createTextNode(result);
+        p.append(roundResult);
+
+    return
 }
 

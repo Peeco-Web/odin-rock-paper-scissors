@@ -1,0 +1,63 @@
+body {
+    display: flex;
+    justify-content: space-around;
+    background-color: rgb(254, 251, 255);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+    
+}
+
+.userContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    flex-grow: 1;
+    align-items: center;
+    
+
+}
+
+.computerContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    flex-grow: 1;
+    align-items: center;
+    
+}
+
+.logRounds {
+    font-size: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.score {
+    font-size: 40px;
+    
+}
+
+.logHeader {
+    font-weight: bold;
+}
+
+button {
+    border: none;
+    appearance: none;
+    background-color: inherit;
+}
+
+.userButtons:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+
+
+img {
+    width: 150px;
+    height: auto;
+}
+
